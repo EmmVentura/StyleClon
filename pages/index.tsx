@@ -10,7 +10,7 @@ import {
   FaStar,
 } from "react-icons/fa";
 import { SiMercadopago } from "react-icons/si";
-import { FiSend } from "react-icons/fi";
+import { FiSend, FiCheck } from "react-icons/fi";
 import { FaTelegram, FaTimes, FaBars } from "react-icons/fa";
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
     {
       title: "2 Meses 🔥",
       price: "$240 MXN",
-      desc: "✅  1 mes gratis 🎁 ",
+      desc: " ❌ sin mes gratis.",
 
       featured: true,
       badge: "Popular",
@@ -75,6 +75,54 @@ export default function Home() {
       },
     },
   ];
+
+  const CopyButton = ({
+    text,
+    onCopy,
+    className = "",
+    icon: Icon = FiSend,
+    successMessage = "¡Copiado!",
+  }: {
+    text: string;
+    onCopy?: () => void;
+    className?: string;
+    icon?: React.ComponentType<any>;
+    successMessage?: string;
+  }) => {
+    const handleCopy = async () => {
+      const textToCopy = text.replace(/\s/g, "");
+
+      try {
+        if (typeof navigator !== "undefined" && navigator.clipboard) {
+          await navigator.clipboard.writeText(textToCopy);
+        } else {
+          // Fallback
+          const textArea = document.createElement("textarea");
+          textArea.value = textToCopy;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+        }
+
+        if (onCopy) onCopy();
+        alert(successMessage);
+      } catch (error) {
+        console.error("Error al copiar:", error);
+        alert("No se pudo copiar el texto");
+      }
+    };
+
+    return (
+      <button
+        onClick={handleCopy}
+        className={`${className} transition-colors`}
+        title="Copiar"
+      >
+        <Icon />
+      </button>
+    );
+  };
 
   // Animaciones
   const cardVariants = {
@@ -235,9 +283,18 @@ export default function Home() {
             href="#pricing"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-10 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all"
+            className="mt-10 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all mx-2"
           >
-            Ver Planes Disponibles
+            Planes Disponibles
+          </motion.a>
+
+          <motion.a
+            href="/artistas"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-10 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all mx-2"
+          >
+            Lista de Artistas
           </motion.a>
         </motion.div>
       </section>
@@ -631,17 +688,11 @@ export default function Home() {
                       <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
                         <p className="font-mono text-gray-800">{item.value}</p>
                         {item.copy && (
-                          <button
-                            onClick={() =>
-                              navigator.clipboard.writeText(
-                                item.value.replace(/\s/g, "")
-                              )
-                            }
+                          <CopyButton
+                            text={item.value}
                             className="text-purple-600 hover:text-purple-800"
-                            title="Copiar"
-                          >
-                            <FiSend />
-                          </button>
+                            successMessage="¡CLABE copiada al portapapeles!"
+                          />
                         )}
                       </div>
                     </div>
@@ -652,6 +703,13 @@ export default function Home() {
                   <p className="text-sm text-blue-700 flex items-start">
                     <FaTelegram className="flex-shrink-0 mt-1 mr-2 text-blue-600" />
                     Envía tu comprobante por Telegram para activar tu membresía.
+                  </p>
+                </div>
+
+                <div className="bg-blue-50 border-l-4 border-red-500 p-4 rounded-r-lg mb-6">
+                  <p className="text-sm text-red-700 flex items-start">
+                    <FaTelegram className="flex-shrink-0 mt-1 mr-2 text-red-600" />
+                    Los precios para MEX son 20MXN menos en todos los planes.
                   </p>
                 </div>
 
@@ -727,17 +785,11 @@ export default function Home() {
                       <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
                         <p className="font-mono text-gray-800">{item.value}</p>
                         {item.copy && (
-                          <button
-                            onClick={() =>
-                              navigator.clipboard.writeText(
-                                item.value.replace(/\s/g, "")
-                              )
-                            }
+                          <CopyButton
+                            text={item.value}
                             className="text-green-600 hover:text-green-800"
-                            title="Copiar"
-                          >
-                            <FiSend />
-                          </button>
+                            successMessage="¡Referencia OXXO copiada al portapapeles!"
+                          />
                         )}
                       </div>
                     </div>
@@ -755,6 +807,13 @@ export default function Home() {
                     <li>Guarda tu ticket de pago</li>
                     <li>Envía una foto del ticket por Telegram</li>
                   </ol>
+                </div>
+
+                <div className="bg-blue-50 border-l-4 border-red-500 p-4 rounded-r-lg mb-6">
+                  <p className="text-sm text-red-700 flex items-start">
+                    <FaTelegram className="flex-shrink-0 mt-1 mr-2 text-red-600" />
+                    Los precios para MEX son 20MXN menos en todos los planes.
+                  </p>
                 </div>
 
                 <div className="flex justify-end">
