@@ -86,7 +86,7 @@ export default function Home() {
     text: string;
     onCopy?: () => void;
     className?: string;
-    icon?: React.ComponentType<any>;
+   icon?: React.ComponentType<{ className?: string }>;
     successMessage?: string;
   }) => {
     const handleCopy = async () => {
