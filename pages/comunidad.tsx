@@ -12,10 +12,9 @@ export default function LegalPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 flex flex-col">
       <header className="bg-white/90 shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-4  flex justify-between items-center">
           {/* Logo */}
           <Link
             href="/"
@@ -24,29 +23,47 @@ export default function LegalPage() {
             StyleClon
           </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden md:flex items-center space-x-6">
+            <Link
+              href="/"
+              className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+            >
+              Planes
+            </Link>
+
             <Link
               href="/legal"
               className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
             >
               Legal
             </Link>
-            <a
+            <Link
+              href="/artistas"
+              className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+            >
+              Artistas
+            </Link>
+            <Link
+              href="/comunidad"
+              className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+            >
+              Comunidad
+            </Link>
+            <Link
               href="https://t.me/ASMR_Latam"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-purple-600 transition-colors flex items-center gap-1"
             >
               <FaTelegram className="text-xl" />
-              <span>Canal</span>
-            </a>
+              <span></span>
+            </Link>
           </nav>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-700 focus:outline-none z-50"
+            className="md:hidden text-gray-700 focus:outline-none z-50" // Added z-50
             aria-label="Menú"
           >
             {isMenuOpen ? (
@@ -59,7 +76,7 @@ export default function LegalPage() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu*/}
         {isMenuOpen && (
           <motion.div
             initial={{ y: -50, opacity: 0 }}
@@ -70,12 +87,13 @@ export default function LegalPage() {
           >
             <div className="flex flex-col space-y-6 text-lg">
               <Link
-                href="#pricing"
+                href="/"
                 onClick={() => setIsMenuOpen(false)}
-                className="border-b border-gray-100 pb-4 text-gray-900"
+                className="border-b border-gray-100 pb-4 text-gray-900" 
               >
                 Planes
               </Link>
+
               <Link
                 href="/legal"
                 onClick={() => setIsMenuOpen(false)}
@@ -83,7 +101,20 @@ export default function LegalPage() {
               >
                 Legal
               </Link>
-              <a
+              <Link
+                href="/artistas"
+                onClick={() => setIsMenuOpen(false)}
+                className="border-b border-gray-100 pb-4 text-gray-900"
+              >
+                Artistas
+              </Link>
+              <Link
+              href="/comunidad"
+              className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+            >
+              Comunidad
+            </Link>
+              <Link
                 href="https://t.me/ASMR_Latam"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -91,7 +122,7 @@ export default function LegalPage() {
               >
                 <FaTelegram className="text-xl" />
                 Unirse al Canal
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
@@ -116,9 +147,9 @@ export default function LegalPage() {
         </div>
 
         <div className="space-y-12">
-          <ApuestasSection title="Apuestas Deportivas">
-            <Section title="Comunidad de Apuestas ">
-              <Link href="https://t.me/Jaiba_Deportiva" passHref>
+          <ApuestasSection title="Rinconcito HOT">
+            <Section title="Comunidad de Porno en General ">
+              <Link href="https://t.me/+9l34942aTWk2NzEx" passHref>
                 <button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
                   Unirse
                 </button>
@@ -135,15 +166,7 @@ export default function LegalPage() {
               </Link>
             </Section>
           </ApuestasSection>
-          <ApuestasSection title="Close Friends">
-            <Section title="">
-              <Link href="/join" passHref>
-                <button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                  Solicitar Acceso
-                </button>
-              </Link>
-            </Section>
-          </ApuestasSection>
+          
           <ApuestasSection title="Trading / Criptomonedas">
             <Section title="Comunidad para aprender y compartir conocimiento!">
              <Link href="#" passHref>
@@ -154,7 +177,7 @@ export default function LegalPage() {
             </Section>
           </ApuestasSection>
           <ApuestasSection title="Referencias">
-            <Section title="Canal donde se subira referencias de los VIPS, ETC. ">
+            <Section title="Canal donde se subira referencias de los VIPS. ">
              <Link href="https://t.me/Referencias_Mrjarocho" passHref>
                 <button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
                   Unirse

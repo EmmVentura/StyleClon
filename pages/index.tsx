@@ -18,8 +18,6 @@ export default function Home() {
   const [isTransferOpen, setIsTransferOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  
-
   const plans = [
     {
       title: "1 Mes 🗓️",
@@ -118,6 +116,13 @@ export default function Home() {
               Legal
             </Link>
             <Link
+              href="/list"
+              className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+            >
+              Artistas
+            </Link>
+
+            <Link
               href="/comunidad"
               className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
             >
@@ -163,7 +168,7 @@ export default function Home() {
               <Link
                 href="#pricing"
                 onClick={() => setIsMenuOpen(false)}
-                className="border-b border-gray-100 pb-4 text-gray-900" 
+                className="border-b border-gray-100 pb-4 text-gray-900"
               >
                 Planes
               </Link>
@@ -176,11 +181,18 @@ export default function Home() {
                 Legal
               </Link>
               <Link
-              href="/comunidad"
-              className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-            >
-              Comunidad
-            </Link>
+                href="/list"
+                onClick={() => setIsMenuOpen(false)}
+                className="border-b border-gray-100 pb-4 text-gray-900"
+              >
+                Artistas
+              </Link>
+              <Link
+                href="/comunidad"
+                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+              >
+                Comunidad
+              </Link>
               <Link
                 href="https://t.me/ASMR_Latam"
                 target="_blank"
@@ -378,8 +390,6 @@ export default function Home() {
         </div>
       </section>
 
-
-
       <div className="text-center mb-16 bg-white">
         <p className="text-lg text-gray-600 max-w-2xl mx-auto bg-white">
           Envia tu comprobante de pago via telegram! <br />
@@ -402,7 +412,7 @@ export default function Home() {
                 StyleClon
               </h2>
               <p className="text-gray-400">
-                Tu acceso exclusivo a contenido premium 
+                Tu acceso exclusivo a contenido premium
               </p>
               <div className="flex space-x-4">
                 <Link
@@ -536,7 +546,6 @@ export default function Home() {
               </ul>
             </div>
 
-            
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
                 Suscríbete
@@ -561,7 +570,6 @@ export default function Home() {
             </div>
           </div>
 
-          
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
             <p>
               © {new Date().getFullYear()} MrJarocho. Todos los derechos

@@ -8,6 +8,11 @@ interface SectionProps {
   children: ReactNode;
 }
 
+
+
+
+
+
 export default function LegalPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -128,60 +133,15 @@ export default function LegalPage() {
         )}
       </header>
 
-      {/* Contenido legal */}
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="flex-1 max-w-4xl mx-auto p-6 py-12 w-full bg-white"
-      >
-        <div className="mb-8">
-          <Link href="/" passHref>
-            <motion.span
-              whileHover={{ x: -5 }}
-              className="flex items-center text-blue-600 hover:text-purple-600 hover:underline bg-white"
-            >
-              ← Volver al inicio
-            </motion.span>
-          </Link>
-        </div>
 
-        <div className="space-y-12">
-          <LegalSection title="Términos y Condiciones" defaultOpen>
-            <Section title="1. Aceptación de Términos">
-              <p>Al unirte y realizar el pago, aceptas automáticamente los siguientes Términos y Condiciones.</p>
-            </Section>
 
-            <Section title="2. Acceso al Contenido">
-              <p>El acceso al grupo privado VIP de Telegram es exclusivo para las personas que realicen el pago correspondiente.</p>
-            </Section>
-            <Section title="3. Pagos y Suscripciones">
-              <p>Los pagos se realizan de forma mensual o en planes con descuento, según lo acordado. No se realizan reembolsos una vez entregado el acceso.</p>
-            </Section>
-            <Section title="4. Disponibilidad del Servicio">
-              <p>El administrador se reserva el derecho de actualizar, modificar o eliminar contenido según lo considere necesario.</p>
-            </Section>
-          </LegalSection>
 
-          <LegalSection title="Política de Privacidad">
-            <Section title="1. No recopilación de datos">
-              <p>No solicitamos, almacenamos ni procesamos información personal de los usuarios. El acceso se gestiona únicamente mediante el enlace privado de Telegram, tras la confirmación de pago.</p>
-            </Section>
-            <Section title="2. Pagos">
-              <p> Los pagos se procesan mediante métodos externos (OXXO, transferencia bancaria, PayPal), sin que recolectemos datos personales adicionales.</p>
-            </Section>
-            <Section title="3. Seguridad">
-              <p>No enviamos solicitudes de datos sensibles ni contraseñas. La comunicación se realiza únicamente a través de los canales oficiales del administrador.</p>
-            </Section>
-            <Section title="4. Cambios en la Política de Privacidad">
-              <p>Nos reservamos el derecho de modificar esta Política de Privacidad en cualquier momento.</p>
-            </Section>
-          </LegalSection>
-        </div>
-      </motion.main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white pt-16 pb-8 ">
+
+
+
+
+<footer className="bg-gray-900 text-white pt-16 pb-8 ">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {/* Logo y descripción */}
@@ -190,10 +150,10 @@ export default function LegalPage() {
                 StyleClon
               </h2>
               <p className="text-gray-400">
-                Tu acceso exclusivo a contenido premium 
+                Tu acceso exclusivo a contenido premium
               </p>
               <div className="flex space-x-4">
-                <a
+                <Link
                   href="https://t.me/ASMR_Latam"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -206,8 +166,8 @@ export default function LegalPage() {
                   >
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.534.26l.213-3.053 5.56-5.022c.22-.198-.033-.312-.338-.112l-6.874 4.326-2.962-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
                   </svg>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -224,7 +184,7 @@ export default function LegalPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -324,7 +284,6 @@ export default function LegalPage() {
               </ul>
             </div>
 
-            
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
                 Suscríbete
@@ -349,7 +308,6 @@ export default function LegalPage() {
             </div>
           </div>
 
-          
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
             <p>
               © {new Date().getFullYear()} MrJarocho. Todos los derechos
@@ -362,50 +320,4 @@ export default function LegalPage() {
   );
 }
 
-// Acordeón
-const LegalSection: React.FC<SectionProps & { defaultOpen?: boolean }> = ({
-  title,
-  children,
-  defaultOpen = false,
-}) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
-  return (
-    <motion.section layout className="border-b border-gray-200 pb-8 ">
-      <motion.button
-        layout
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between w-full text-left items-center"
-      >
-        <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          className="text-gray-500"
-        >
-          ▼
-        </motion.span>
-      </motion.button>
-
-      <motion.div
-        initial={false}
-        animate={{
-          height: isOpen ? "auto" : 0,
-          opacity: isOpen ? 1 : 0.8,
-          marginTop: isOpen ? "1rem" : "0",
-        }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden"
-      >
-        {children}
-      </motion.div>
-    </motion.section>
-  );
-};
-
-// Sección
-const Section: React.FC<SectionProps> = ({ title, children }) => (
-  <div className="mb-6">
-    <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
-    <div className="text-gray-600 space-y-2">{children}</div>
-  </div>
-);
+      
