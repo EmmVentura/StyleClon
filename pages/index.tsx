@@ -10,7 +10,7 @@ import {
   FaStar,
 } from "react-icons/fa";
 import { SiMercadopago } from "react-icons/si";
-import { FiSend, FiCheck } from "react-icons/fi";
+import { FiSend } from "react-icons/fi";
 import { FaTelegram, FaTimes, FaBars } from "react-icons/fa";
 
 export default function Home() {
@@ -164,7 +164,7 @@ export default function Home() {
               Legal
             </Link>
             <Link
-              href="/list"
+              href="/artistas"
               className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
             >
               Artistas
