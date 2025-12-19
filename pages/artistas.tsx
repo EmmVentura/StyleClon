@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useState, ReactNode, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { FaTelegram, FaTimes, FaBars, FaSearch, FaChevronDown, FaChevronUp, FaStar, FaFilter, FaSortAlphaDown, FaTags } from "react-icons/fa";
+import { FaTelegram, FaTimes, FaBars, FaSearch, FaChevronDown, FaChevronUp, FaStar, FaFilter } from "react-icons/fa";
 
 interface Artista {
   nombre: string;
@@ -14,8 +14,7 @@ export default function ArtistasPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
   const [expandedLetters, setExpandedLetters] = useState<string[]>(["A", "B", "C"]);
-  const [sortBy, setSortBy] = useState<"name" | "category">("name");
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   
   const artistas: Artista[] = [
@@ -499,7 +498,9 @@ export default function ArtistasPage() {
                 Mostrando <span className="text-purple-600">{filteredArtistas.length}</span> de {artistas.length} artistas
               </span>
               {searchTerm && (
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">"{searchTerm}"</span>
+              <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">
+              {searchTerm}
+              </span>
               )}
               {showFavorites && (
                 <span className="bg-yellow-50 text-yellow-700 px-2 py-1 rounded">Destacados</span>
